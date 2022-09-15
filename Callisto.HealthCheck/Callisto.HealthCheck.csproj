@@ -8,4 +8,7 @@
 	 <Authors>Shrey S. Kumar</Authors>
 	 <Company>Callisto Enterprises LLC.</Company>
   </PropertyGroup>
+  <ItemGroup>
+	 <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
 </Project>
