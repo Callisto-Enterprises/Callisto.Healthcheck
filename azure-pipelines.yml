@@ -1,4 +1,4 @@
-name: $(PackageVersion)
+name: $(Major).$(Minor).$(Patch)
 
 trigger:
 - master
