@@ -31,13 +31,16 @@ namespace Callisto.HealthCheck
                 {
                     Component = x.Key,
                     Status = x.Value.Status.ToString(),
-                    Description = x.Value.Description ?? "(Empty)"
+                    Description = x.Value.Description
                 }),
                 HealthCheckDuration = result.TotalDuration,
                 EnvironmentName = environment.EnvironmentName,
                 Version = Assembly.GetEntryAssembly()?.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion ?? "(Empty)"
             };
-            await context.Response.WriteAsync(JsonSerializer.Serialize(response));
+            await context.Response.WriteAsync(JsonSerializer.Serialize(response, new JsonSerializerOptions
+            {
+                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
+            }));
         }
     }
 }
